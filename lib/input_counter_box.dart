@@ -18,6 +18,7 @@ class InputCounterBox extends StatefulWidget {
 
 class _InputCounterBoxState extends State<InputCounterBox> {
   int _length = 0;
+  TextEditingController textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,20 @@ class _InputCounterBoxState extends State<InputCounterBox> {
                 });
                 widget.onLengthChanged(_length);
               },
+              controller: textController,
               decoration: InputDecoration(
+                suffixIcon: InkWell(
+                  onTap: () {
+                    textController.clear();
+                    setState(() {
+                      _length = 0;
+                      widget.onLengthChanged(_length);
+                    });
+                  },
+                  child: Icon(
+                    Icons.clear,
+                  ),
+                ),
                 hintText: 'Text eingeben',
                 border: OutlineInputBorder(),
               ),
