@@ -60,4 +60,10 @@ class _InputCounterBoxState extends State<InputCounterBox> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    textController.dispose();
+    super.dispose();
+  }
 }
